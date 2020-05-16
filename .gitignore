@@ -1,0 +1,4 @@
+# Default project folders
+node_modules
+yarn.lock
+.idea
