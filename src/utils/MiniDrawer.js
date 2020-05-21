@@ -4,7 +4,6 @@ import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
@@ -15,6 +14,11 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Avatar from "@material-ui/core/Avatar";
 import {Home, Mail, School, SportsEsports, Work} from "@material-ui/icons";
 import history from "./history";
+import LanguageSelector from "./LanguageSelector";
+import {Text} from "./LanguageProvider";
+import red from "@material-ui/core/colors/red";
+import {white} from "color-name";
+
 
 const drawerWidth = 240;
 
@@ -82,13 +86,21 @@ const useStyles = makeStyles((theme) => ({
         alignItems: 'center',
         justifyContent: 'flex-end',
         padding: theme.spacing(0, 1),
-        // necessary for content to be below app bar
         ...theme.mixins.toolbar,
     },
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
     },
+    footer: {
+        position: 'absolute',
+        left: 0,
+        width: '100%',
+        bottom: 0,
+        backgroundColor: red,
+        color: white,
+        textAlign: 'center'
+    }
 }));
 
 export default function MiniDrawer() {
@@ -111,7 +123,6 @@ export default function MiniDrawer() {
     return (
         <div className={classes.root}>
             <CssBaseline />
-
             <Drawer
                 variant="permanent"
                 className={clsx(classes.drawer, {
@@ -125,7 +136,9 @@ export default function MiniDrawer() {
                     }),
                 }}
             >
-
+                <div className={classes.footer}>
+                    <LanguageSelector/>
+                </div>
                 <div className={clsx(classes.toolbarIcon, {
                     [classes.hide]: open,
                 })}>
@@ -142,12 +155,12 @@ export default function MiniDrawer() {
                 </div>
                 <Divider />
                 <List>
-                    {[{Name: 'Início', Page: '', Icon: <Home/>},
-                        {Name: 'Contato', Page: 'contacts', Icon: <Mail/>},
-                        {Name: 'Educação', Page: 'resume', Icon: <School/>},
-                        {Name: 'Jogos', Page: 'games', Icon: <SportsEsports/>},
-                        {Name: 'Conhecimento', Page: 'knowledge', Icon: <MenuBook/>},
-                        {Name: 'Projetos', Page: 'projects', Icon: <Work/>}].map((item, index) => (
+                    {[{Name: <Text tid='homeMiniDrawer' />, Page: '', Icon: <Home/>},
+                        {Name: <Text tid='contactMiniDrawer' />, Page: 'contacts', Icon: <Mail/>},
+                        {Name: <Text tid='educationMiniDrawer' />, Page: 'resume', Icon: <School/>},
+                        {Name: <Text tid='gamesMiniDrawer' />, Page: 'games', Icon: <SportsEsports/>},
+                        {Name: <Text tid='knowledgeMiniDrawer' />, Page: 'knowledge', Icon: <MenuBook/>},
+                        {Name: <Text tid='projectsMiniDrawer' />, Page: 'projects', Icon: <Work/>}].map((item, index) => (
                         <ListItem button key={item.Name} onClick={() => changePage(item.Page)}>
                             <ListItemIcon className={classes.listIcon}>
                                 {item.Icon}

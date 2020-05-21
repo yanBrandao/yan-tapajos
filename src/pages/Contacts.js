@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
-import {makeStyles, useTheme} from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
+import React from 'react';
+import {makeStyles} from "@material-ui/core/styles";
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import TwitterIcon from '@material-ui/icons/Twitter';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSteam } from '@fortawesome/free-brands-svg-icons'
-import Button from "@material-ui/core/Button";
-import history from "../utils/history";
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faSteam} from '@fortawesome/free-brands-svg-icons'
+import {Text} from "../utils/LanguageProvider";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -51,31 +48,38 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const openSocialNetwork = (objectParams) => {
-    console.log(objectParams.id)
-    window.open("https://www.linkedin.com/in/yanbrandao/", '_blank')
-    window.open('https://twitter.com/yantapajos', '_blank')
+const openSocialNetwork = (event) => {
+    if(event === 'linkedin')
+        window.open("https://www.linkedin.com/in/yanbrandao/", '_blank')
+    if(event === 'twitter')
+        window.open('https://twitter.com/yantapajos', '_blank')
+    if(event === 'insta')
+        window.open('https://www.instagram.com/yan.brandao/', '_blank')
+    if(event === 'facebook')
+        window.open('https://www.facebook.com/Yan.Brandao', '_blank')
+    if(event === 'git')
+        window.open('https://github.com/yanBrandao', '_blank')
+    if(event === 'steam')
+        window.open('https://steamcommunity.com/id/ybrandao/', '_blank')
 }
 
 export default function Contacts() {
     const classes = useStyles();
-    const theme = useTheme();
 
     return (
         <main className={classes.content} >
-            <div className={classes.titleBar}>Contato</div>
+            <div className={classes.titleBar}><Text tid='contactTitle'/></div>
             <div className={classes.contactsContent}>
                 <p>
-                    Fique a vontade para entrar em contato comigo!
-
+                    <Text tid='contactText'/>
                 </p>
                 <div>
-                    <LinkedInIcon id='linkedin' className={classes.iconItem} onClick={openSocialNetwork}/>
-                    <FacebookIcon className={classes.iconItem}/>
-                    <InstagramIcon className={classes.iconItem}/>
-                    <GitHubIcon className={classes.iconItem}/>
-                    <TwitterIcon className={classes.iconItem} onClick={openSocialNetwork}/>
-                    <FontAwesomeIcon className={classes.iconItemSteam} icon={faSteam} />
+                    <LinkedInIcon className={classes.iconItem} onClick={() => openSocialNetwork('linkedin')}/>
+                    <FacebookIcon className={classes.iconItem} onClick={() => openSocialNetwork('facebook')}/>
+                    <InstagramIcon className={classes.iconItem} onClick={() => openSocialNetwork('insta')}/>
+                    <GitHubIcon className={classes.iconItem} onClick={() => openSocialNetwork('git')}/>
+                    <TwitterIcon className={classes.iconItem} onClick={() => openSocialNetwork('twitter')}/>
+                    <FontAwesomeIcon className={classes.iconItemSteam} icon={faSteam} onClick={() => openSocialNetwork('steam')}/>
                 </div>
             </div>
         </main>

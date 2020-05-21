@@ -1,8 +1,6 @@
-import React, { Component } from 'react';
-import {makeStyles, useTheme} from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
-import Grid from "@material-ui/core/Grid";
-
+import React from 'react';
+import {makeStyles} from "@material-ui/core/styles";
+import TitleBar from "../utils/TitleBar";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -11,16 +9,22 @@ const useStyles = makeStyles((theme) => ({
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
+    },
+    titleBar: {
+        fontFamily: "Poiret One, cursive",
+        fontSize: 44,
+        backgroundColor: "#07233D",
+        padding: 20,
+        color: "white"
     }
 }));
 
 export default function Games() {
     const classes = useStyles();
-    const theme = useTheme();
 
     return (
-        <main className={classes.content}>
-            Meus Jogos
+        <main className={classes.content} >
+            <TitleBar tid='gamesTitle' />
         </main>
     )
 }

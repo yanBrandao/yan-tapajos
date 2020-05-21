@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import {makeStyles, useTheme} from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import React from 'react';
+import {makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import {Public} from "@material-ui/icons";
 import Button from "@material-ui/core/Button";
+import {Text} from "../utils/LanguageProvider";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,7 +38,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Home() {
     const classes = useStyles();
-    const theme = useTheme();
 
         return (
             <main id='mainHome' className={classes.content}>
@@ -49,34 +47,44 @@ export default function Home() {
                     </Grid>
                     <Grid item xs={6} className={classes.divTitle}>
                         <p className={classes.title}>
-                            <b>Opa, tudo bem?</b>
+                            <b><Text tid='homePhrase01'/></b>
                         </p>
                         <p className={classes.title}>
-                            <b>Meu nome é Yan Tapajós</b>
+                            <b><Text tid='homePhrase02'/></b>
                         </p>
                         <p className={classes.title}>
-                            <b>Um cara apaixonado por Computação e Jogos!</b>
+                            <b><Text tid='homePhrase03'/></b>
                         </p>
                         <p className={classes.text}>
-                            Engenheiro de Software
+                            <Text tid='homeSubtitle'/>
                         </p>
                         <p className={classes.text}>
-                            <b className={classes.identifier}>Idade:</b> 27 anos
+                            <b className={classes.identifier}>
+                                <Text tid='homeAgeBullet'/>
+                            </b> <Text tid='homeAgeContent'/>
                         </p>
                         <p className={classes.text}>
-                            <b className={classes.identifier}>Nascimento:</b> 25-07
+                            <b className={classes.identifier}>
+                                <Text tid='homeAnniversaryBullet'/>
+                            </b> <Text tid='homeAnniversaryContent'/>
                         </p>
                         <p className={classes.text}>
-                            <b className={classes.identifier}> Endereço:</b> Paulínia - São Paulo
+                            <b className={classes.identifier}>
+                                <Text tid='homeAddressBullet'/>
+                            </b> <Text tid='homeAddressContent'/>
                         </p>
                         <p className={classes.text}>
-                            <b className={classes.identifier}>Freelancer:</b> Disponível
+                            <b className={classes.identifier}>
+                                <Text tid='homeFreelancerBullet'/>
+                            </b> <Text tid='homeFreelancerContent'/>
                         </p>
                         <p className={classes.text}>
-                            <b className={classes.identifier}>Estado Civil:</b> Casado (Com a pessoa mais mavarilhosa do mundo.)
+                            <b className={classes.identifier}>
+                                <Text tid='homeCivilStateBullet'/>
+                            </b> <Text tid='homeCivilStateContent'/>
                         </p>
                         <Button  variant="contained" color="primary">
-                            Baixar CV
+                            <Text tid="buttonCV" />
                         </Button>
                     </Grid>
                 </Grid>
