@@ -36,6 +36,14 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
+const listProfile = [
+    {bullet: 'homeAnniversaryBullet', content: 'homeAnniversaryContent'},
+    {bullet: 'homeAddressBullet', content: 'homeAddressContent'},
+    {bullet: 'homeFreelancerBullet', content: 'homeFreelancerContent'},
+    {bullet: 'homeCivilStateBullet', content: 'homeCivilStateContent'},
+    {bullet: 'homeAgeBullet', content: 'homeAgeContent'},
+]
+
 export default function Home() {
     const classes = useStyles();
 
@@ -58,31 +66,13 @@ export default function Home() {
                         <p className={classes.text}>
                             <Text tid='homeSubtitle'/>
                         </p>
-                        <p className={classes.text}>
-                            <b className={classes.identifier}>
-                                <Text tid='homeAgeBullet'/>
-                            </b> <Text tid='homeAgeContent'/>
-                        </p>
-                        <p className={classes.text}>
-                            <b className={classes.identifier}>
-                                <Text tid='homeAnniversaryBullet'/>
-                            </b> <Text tid='homeAnniversaryContent'/>
-                        </p>
-                        <p className={classes.text}>
-                            <b className={classes.identifier}>
-                                <Text tid='homeAddressBullet'/>
-                            </b> <Text tid='homeAddressContent'/>
-                        </p>
-                        <p className={classes.text}>
-                            <b className={classes.identifier}>
-                                <Text tid='homeFreelancerBullet'/>
-                            </b> <Text tid='homeFreelancerContent'/>
-                        </p>
-                        <p className={classes.text}>
-                            <b className={classes.identifier}>
-                                <Text tid='homeCivilStateBullet'/>
-                            </b> <Text tid='homeCivilStateContent'/>
-                        </p>
+                        {listProfile.map(item => (
+                            <p className={classes.text}>
+                                <b className={classes.identifier}>
+                                    <Text tid={item.bullet}/>
+                                </b> <Text tid={item.content}/>
+                            </p>
+                        ))}
                         <Button  variant="contained" color="primary">
                             <Text tid="buttonCV" />
                         </Button>

@@ -150,7 +150,7 @@ export default function MiniDrawer() {
                     [classes.hide]: !open,
                 })}>
                     <IconButton  onClick={handleDrawerClose}>
-                        {theme.direction === 'rtl' ? <CloseIcon /> : <CloseIcon />}
+                        <CloseIcon />
                     </IconButton>
                 </div>
                 <Divider />
